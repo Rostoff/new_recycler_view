@@ -13,6 +13,7 @@ import androidx.recyclerview.selection.ItemDetailsLookup;
 import androidx.recyclerview.selection.ItemKeyProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Date;
 import java.util.List;
 
 public class MyElementAdapter extends RecyclerView.Adapter<MyElementAdapter.MyViewHolder> {
@@ -53,17 +54,22 @@ public class MyElementAdapter extends RecyclerView.Adapter<MyElementAdapter.MyVi
         OnNoteListener onNoteListener;
 
         private TextView mName;
+        private TextView mPname;
+        //private TextView mBirthDate;
         private TextView mDescription;
         private ImageView mImage;
-        private ImageView mArrowRight;
+        //private ImageView mArrowRight;
 
         public MyViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
 
             mName = (TextView)itemView.findViewById(R.id.name);
+            mPname = (TextView)itemView.findViewById(R.id.pname);
+            //mBirthDate = (TextView)itemView.findViewById(R.id.birthdate);
             mDescription = (TextView)itemView.findViewById(R.id.description);
             mImage = (ImageView)itemView.findViewById(R.id.image);
-            mArrowRight = (ImageView)itemView.findViewById(R.id.arrow_right);
+
+            //mArrowRight = (ImageView)itemView.findViewById(R.id.arrow_right);
             this.onNoteListener = onNoteListener;
 
             itemView.setOnClickListener(this);
@@ -71,9 +77,12 @@ public class MyElementAdapter extends RecyclerView.Adapter<MyElementAdapter.MyVi
 
         public void display(Element element){
             mName.setText(element.getName());
+            mPname.setText(element.getPname());
+            //mBirthDate.setText(element.getBirthDate());
             mDescription.setText(element.getDescription());
             mImage.setImageResource(element.getImage());
-            mArrowRight.setImageResource(element.getArrow());
+
+            //mArrowRight.setImageResource(element.getArrow());
         }
 
         @Override
@@ -87,51 +96,4 @@ public class MyElementAdapter extends RecyclerView.Adapter<MyElementAdapter.MyVi
     }
 
 }
-
-
-//    public class MyItemKeyProvider extends ItemKeyProvider {
-//        private final List<Element> elementList;
-//
-//        public MyItemKeyProvider(int scope, List<Element> itemList) {
-//            super(scope);
-//            this.elementList = itemList;
-//        }
-//
-//        @Nullable
-//        @Override
-//        public Object getKey(int position) {
-//            return elementList.get(position);
-//        }
-//
-//        @Override
-//        public int getPosition(@NonNull Object key) {
-//            return elementList.indexOf(key);
-//        }
-//    }
-//
-//
-//    public class MyItemLookup extends ItemDetailsLookup {
-//
-//        private final RecyclerView recyclerView;
-//
-//        public MyItemLookup(RecyclerView recyclerView) {
-//            this.recyclerView = recyclerView;
-//        }
-//
-//        @Nullable
-//        @Override
-//        public ItemDetails getItemDetails(@NonNull MotionEvent e) {
-//            View view = recyclerView.findChildViewUnder(e.getX(), e.getY());
-//            if (view != null) {
-//                RecyclerView.ViewHolder viewHolder = recyclerView.getChildViewHolder(view);
-//                if (viewHolder instanceof MyElementAdapter.MyViewHolder) {
-//                    return ((MyElementAdapter.MyViewHolder) viewHolder).getItemDetails();
-//                }
-//            }
-//
-//            return null;
-//        }
-//    }
-
-
 

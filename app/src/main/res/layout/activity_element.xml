@@ -25,10 +25,17 @@
             android:text="Name"/>
 
         <TextView
+            android:id="@+id/pname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:text="Prenom"/>
+
+        <TextView
             android:id="@+id/description"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/name"
+            android:layout_below="@id/pname"
             android:text="description"/>
 
         <ImageView
