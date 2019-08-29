@@ -46,6 +46,7 @@ public class NewActivity extends AppCompatActivity {
         formatDate = element.getBirthDate().toString();
         pBirthDate.setText(element.getBirthDate().toString());
         pPortablePhone.setText(element.getPortablePhone());
+        pProfilImage.setImageResource(element.getImage());
     }
 
 
