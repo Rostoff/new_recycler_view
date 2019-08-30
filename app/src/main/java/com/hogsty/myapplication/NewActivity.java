@@ -19,6 +19,8 @@ public class NewActivity extends AppCompatActivity {
     private TextView pname;
     private TextView pBirthDate;
     private TextView pPortablePhone;
+    private TextView pDeskphone;
+    private TextView pEmail;
     private ImageView pProfilImage;
     private String formatDate;
     Element element;
@@ -39,6 +41,8 @@ public class NewActivity extends AppCompatActivity {
         pname = findViewById(R.id.pname);
         pBirthDate = findViewById(R.id.birthdate);
         pPortablePhone = findViewById(R.id.portable_phone);
+        pDeskphone = findViewById(R.id.desk_phone);
+        pEmail = findViewById(R.id.mail);
         pProfilImage = findViewById(R.id.profil_image);
 
         name.setText(element.getName());
@@ -47,10 +51,9 @@ public class NewActivity extends AppCompatActivity {
         pBirthDate.setText(element.getBirthDate().toString());
         pPortablePhone.setText(element.getPortablePhone());
         pProfilImage.setImageResource(element.getImage());
+        pDeskphone.setText(element.getDeskPhone());
+        pEmail.setText(element.getEmail());
     }
-
-
-
 
 
     private void configureToolbar(){

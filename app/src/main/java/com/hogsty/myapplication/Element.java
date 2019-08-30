@@ -2,13 +2,17 @@ package com.hogsty.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.Date;
 
-public class Element  implements Parcelable {
+import io.realm.Realm;
+import io.realm.RealmObject;
+
+public class Element extends RealmObject implements Parcelable {
     private String name;
     private String pname;
     private Date birthDate;
@@ -18,6 +22,9 @@ public class Element  implements Parcelable {
     private String description;
     private int image;
     private int arrow;
+
+    public Element() {
+    }
 
     public Element(String name, String pname, Date birthDate, String portablePhone, String deskPhone, String email, String description, int image, int arrow) {
         this.name = name;
@@ -75,6 +82,7 @@ public class Element  implements Parcelable {
 
 
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -86,6 +94,8 @@ public class Element  implements Parcelable {
         parcel.writeString(pname);
         parcel.writeLong(birthDate.getTime());
         parcel.writeString(portablePhone);
+        parcel.writeString(deskPhone);
+        parcel.writeString(email);
         parcel.writeString(description);
         parcel.writeInt(image);
     }
@@ -105,6 +115,8 @@ public class Element  implements Parcelable {
         pname = in.readString();
         birthDate = new Date(in.readLong());
         portablePhone = in.readString();
+        deskPhone = in.readString();
+        email = in.readString();
         description = in.readString();
         image = in.readInt();
     }

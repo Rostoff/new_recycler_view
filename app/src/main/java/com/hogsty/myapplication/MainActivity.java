@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
+
 public class MainActivity extends AppCompatActivity implements MyElementAdapter.OnNoteListener {
 
     private static final String TAG = "MainActivity";
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements MyElementAdapter.
     private List<Element> myElements;
     private MyElementAdapter myElementAdapter;
     private Element element;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +65,17 @@ public class MainActivity extends AppCompatActivity implements MyElementAdapter.
 
         //Ici on utilise la méthode setAdapter pour lier l'adapter à la liste
         recyclerView.setAdapter(myElementAdapter);
+
+//        //Initialisationd e la base de données Realm.is
+//        Realm.init(context);
+//
+//        //Creation d'une instance de Realm
+//        Realm realm = Realm.getDefaultInstance();
+//
+//        //Requête Realm pour tout les éléments
+//        final RealmResults<Element> elementQuery = realm.where(Element.class).equalTo("name", "COUCHY").findAll();
+//        elementQuery.size();
+//        System.out.println("Le nombre d'éléments correspondant est " + elementQuery.size());
     }
 
     @Override
